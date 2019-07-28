@@ -1,6 +1,8 @@
 set encoding=utf-8
 scriptencoding utf-8
 
+autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
+
 set background=dark
 colorscheme solarized
 syntax enable
@@ -30,9 +32,13 @@ set nocompatible
 set suffixesadd+=.php
 set suffixesadd+=.ctp
 filetype plugin on
+nnoremap j gj
+nnoremap k gk
 inoremap <?<Enter> <?php  ?><Left><Left><Left>
+inoremap <?=<Enter> <?=  ?><Left><Left><Left>
 inoremap <%<Enter> <%  %><Left><Left><Left>
 inoremap <%=<Enter> <%=  %><Left><Left><Left>
+inoremap {!!<Enter> {!!  !!}<Left><Left><Left><Left>
 inoremap {<Enter> {}<Left><CR><Esc>==<S-o>
 inoremap (<Enter> ()<Left><CR><Esc>==<S-o>
 inoremap [<Enter> []<Left><CR><Esc>==<S-o>
@@ -42,6 +48,8 @@ inoremap [ []<Left>
 inoremap < <><Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
+inoremap {{ {{<Space><Space>}}<Left><Left><Left>
+inoremap <C-l> <Esc><S-i><<Esc><Right>vey<S-a>><Esc>o</<Esc>p<S-a>><Esc><S-o>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -50,6 +58,8 @@ vnoremap ' c'<C-r>"'<Esc>
 vnoremap ( c(<C-r>")<Esc>
 vnoremap { c{<C-r>"}<Esc>
 vnoremap [ c[<C-r>"]<Esc>
+
+set rtp+=~/vimPlugin/tabnine-vim
 
 
 if has('vim_starting')
@@ -74,19 +84,19 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 
 NeoBundle 'Yggdroot/indentLine'
 
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-if neobundle#is_installed('neocomplcache.vim')
-	let g:neocomplcache_enable_at_startup = 1
-	let g:neocomplcache_enable_smart_case = 1
-	let g:neocomplcache_min_keyword_length = 3
-	let g:neocomplcache_auto_completion_start_length = 1
-	let g:neocomplcache_enable_auto_delimiter = 1
-	inoremap <expr><BS> neocomplcache#smart_close_popup()."<C-h>"
-	imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
-	imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
-endif
+"NeoBundle 'Shougo/neocomplcache.vim'
+"NeoBundle 'Shougo/neosnippet'
+"NeoBundle 'Shougo/neosnippet-snippets'
+"if neobundle#is_installed('neocomplcache.vim')
+";let g:neocomplcache_enable_at_startup = 1
+";let g:neocomplcache_enable_smart_case = 1
+";let g:neocomplcache_min_keyword_length = 3
+";let g:neocomplcache_auto_completion_start_length = 1
+";let g:neocomplcache_enable_auto_delimiter = 1
+";inoremap <expr><BS> neocomplcache#smart_close_popup()."<C-h>"
+";imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
+";imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+"endif
 
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
