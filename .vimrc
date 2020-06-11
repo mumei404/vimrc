@@ -23,17 +23,19 @@ set history=5000
 
 autocmd QuickFixCmdPost *grep* cwindow
 
+set noswapfile
 set number
 set autoindent
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set nocompatible
 set suffixesadd+=.php
 set suffixesadd+=.ctp
 filetype plugin on
 nnoremap j gj
 nnoremap k gk
+inoremap (*<Enter> (*  *)<Left><Left><Left>
 inoremap <?<Enter> <?php  ?><Left><Left><Left>
 inoremap <?=<Enter> <?=  ?><Left><Left><Left>
 inoremap <%<Enter> <%  %><Left><Left><Left>
@@ -43,13 +45,20 @@ inoremap {<Enter> {}<Left><CR><Esc>==<S-o>
 inoremap (<Enter> ()<Left><CR><Esc>==<S-o>
 inoremap [<Enter> []<Left><CR><Esc>==<S-o>
 inoremap { {}<Left>
+inoremap {} {}<Left>
 inoremap ( ()<Left>
+inoremap () ()<Left>
 inoremap [ []<Left>
+inoremap [] []<Left>
 inoremap < <><Left>
+inoremap <> <><Left>
 inoremap " ""<Left>
+inoremap "" ""<Left>
 inoremap ' ''<Left>
+inoremap '' ''<Left>
 inoremap {{ {{<Space><Space>}}<Left><Left><Left>
 inoremap <C-l> <Esc><S-i><<Esc><Right>vey<S-a>><Esc>o</<Esc>p<S-a>><Esc><S-o>
+inoremap <C-l> <Right>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -97,6 +106,16 @@ NeoBundle 'Yggdroot/indentLine'
 ";imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
 ";imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
 "endif
+"
+NeoBundle 'mattn/emmet-vim'
+
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+autocmd BufRead,BufNewFile *.md  set filetype=markdown
+" 自動で折りたたまないようにする
+let g:vim_markdown_folding_disabled=1
+
 
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'tacahiroy/ctrlp-funky'
@@ -107,6 +126,19 @@ let g:ctrlp_types = ['fil']
 let g:ctrlp_extensions = ['funky', 'commandline']
 command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 let g:ctrlp_funky_matchtype = 'path'
+
+
+"NeoBundle 'scrooloose/syntastic.git'
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 
 call neobundle#end()
