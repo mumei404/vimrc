@@ -1,148 +1,89 @@
-set encoding=utf-8
-scriptencoding utf-8
-
-autocmd BufNewFile,BufRead *.{html,htm,vue*} set filetype=html
-
-set background=dark
-colorscheme solarized
-syntax enable
-
-set incsearch
-set ignorecase
-set smartcase
-set hlsearch
-nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
-
-set cursorline
-
-set showmatch
-source $VIMRUNTIME/macros/matchit.vim
-
-set wildmenu
-set history=5000
-
-autocmd QuickFixCmdPost *grep* cwindow
-
-set noswapfile
-set number
-set autoindent
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set nocompatible
-set suffixesadd+=.php
-set suffixesadd+=.ctp
-filetype plugin on
-nnoremap j gj
-nnoremap k gk
-inoremap (*<Enter> (*  *)<Left><Left><Left>
-inoremap <?<Enter> <?php  ?><Left><Left><Left>
-inoremap <?=<Enter> <?=  ?><Left><Left><Left>
-inoremap <%<Enter> <%  %><Left><Left><Left>
-inoremap <%=<Enter> <%=  %><Left><Left><Left>
-inoremap {!!<Enter> {!!  !!}<Left><Left><Left><Left>
-inoremap {<Enter> {}<Left><CR><Esc>==<S-o>
-inoremap (<Enter> ()<Left><CR><Esc>==<S-o>
-inoremap [<Enter> []<Left><CR><Esc>==<S-o>
-inoremap { {}<Left>
-inoremap {} {}<Left>
-inoremap ( ()<Left>
-inoremap () ()<Left>
-inoremap [ []<Left>
-inoremap [] []<Left>
-inoremap < <><Left>
-inoremap <> <><Left>
-inoremap " ""<Left>
-inoremap "" ""<Left>
-inoremap ' ''<Left>
-inoremap '' ''<Left>
-inoremap {{ {{<Space><Space>}}<Left><Left><Left>
-inoremap <C-l> <Esc><S-i><<Esc><Right>vey<S-a>><Esc>o</<Esc>p<S-a>><Esc><S-o>
-inoremap <C-l> <Right>
-
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-vnoremap " c"<C-r>""<Esc>
-vnoremap ' c'<C-r>"'<Esc>
-vnoremap ( c(<C-r>")<Esc>
-vnoremap { c{<C-r>"}<Esc>
-vnoremap [ c[<C-r>"]<Esc>
-
-set rtp+=~/vimPlugin/tabnine-vim
-
-
-if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-		echo "install NeoBundle..."
-		:call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-	endif
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'itchyny/lightline.vim'
-set laststatus=2
-set showmode
-set showcmd
-set ruler
-
-NeoBundle 'bronson/vim-trailing-whitespace'
-
-NeoBundle 'Yggdroot/indentLine'
-
-"NeoBundle 'Shougo/neocomplcache.vim'
-"NeoBundle 'Shougo/neosnippet'
-"NeoBundle 'Shougo/neosnippet-snippets'
-"if neobundle#is_installed('neocomplcache.vim')
-";let g:neocomplcache_enable_at_startup = 1
-";let g:neocomplcache_enable_smart_case = 1
-";let g:neocomplcache_min_keyword_length = 3
-";let g:neocomplcache_auto_completion_start_length = 1
-";let g:neocomplcache_enable_auto_delimiter = 1
-";inoremap <expr><BS> neocomplcache#smart_close_popup()."<C-h>"
-";imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
-";imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
-"endif
-"
-NeoBundle 'mattn/emmet-vim'
-
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-autocmd BufRead,BufNewFile *.md  set filetype=markdown
-" 自動で折りたたまないようにする
-let g:vim_markdown_folding_disabled=1
-
-
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'suy/vim-ctrlp-commandline'
-let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_types = ['fil']
-let g:ctrlp_extensions = ['funky', 'commandline']
-command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
-let g:ctrlp_funky_matchtype = 'path'
-
-
-"NeoBundle 'scrooloose/syntastic.git'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
-
-
-call neobundle#end()
-
-filetype plugin indent on
-
-NeoBundleCheck
+set encoding=utf-8                                                                                                                                                                                                                                                                                                                                                                            
+scriptencoding utf-8                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                              
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'                                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                                                                                              
+call plug#begin()                                                                                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                                                                                              
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                              
+Plug 'tomasiser/vim-code-dark'                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                              
+call plug#end()                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                              
+colorscheme codedark                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                              
+" use <tab> to trigger completion and navigate to the next complete item                                                                                                                                                                                                                                                                                                                      
+function! CheckBackspace() abort                                                                                                                                                                                                                                                                                                                                                              
+  let col = col('.') - 1                                                                                                                                                                                                                                                                                                                                                                      
+  return !col || getline('.')[col - 1]  =~# '\s'                                                                                                                                                                                                                                                                                                                                              
+endfunction                                                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                                                              
+inoremap <silent><expr> <Tab>                                                                                                                                                                                                                                                                                                                                                                 
+      \ coc#pum#visible() ? coc#pum#next(1) :                                                                                                                                                                                                                                                                                                                                                 
+      \ CheckBackspace() ? "\<Tab>" :                                                                                                                                                                                                                                                                                                                                                         
+      \ coc#refresh()                                                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                                                                              
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"                                                                                                                                                                                                                                                                                                                          
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                                              
+" Make <CR> to accept selected completion item or notify coc.nvim to format                                                                                                                                                                                                                                                                                                                   
+" <C-g>u breaks current undo, please make your own choice                                                                                                                                                                                                                                                                                                                                     
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()                                                                                                                                                                                                                                                                                                                            
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"                                                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                                                                              
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable                                                                                                                                                                                                                                                                                                                      
+" delays and poor user experience                                                                                                                                                                                                                                                                                                                                                             
+set updatetime=300                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                              
+" Use `[g` and `]g` to navigate diagnostics                                                                                                                                                                                                                                                                                                                                                   
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list                                                                                                                                                                                                                                                                                                             
+nmap <silent> [g <Plug>(coc-diagnostic-prev)                                                                                                                                                                                                                                                                                                                                                  
+nmap <silent> ]g <Plug>(coc-diagnostic-next)                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                              
+" GoTo code navigation                                                                                                                                                                                                                                                                                                                                                                        
+nmap <silent> <C-]> <Plug>(coc-definition)                                                                                                                                                                                                                                                                                                                                                    
+" nmap <silent> gy <Plug>(coc-type-definition)                                                                                                                                                                                                                                                                                                                                                
+" nmap <silent> gi <Plug>(coc-implementation)                                                                                                                                                                                                                                                                                                                                                 
+nmap <silent> <C-[> <Plug>(coc-references)                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                              
+" Use K to show documentation in preview window                                                                                                                                                                                                                                                                                                                                               
+nnoremap <silent> K :call ShowDocumentation()<CR>                                                                                                                                                                                                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                                                                                                              
+function! ShowDocumentation()                                                                                                                                                                                                                                                                                                                                                                 
+  if CocAction('hasProvider', 'hover')                                                                                                                                                                                                                                                                                                                                                        
+      call CocActionAsync('doHover')                                                                                                                                                                                                                                                                                                                                                          
+        else                                                                                                                                                                                                                                                                                                                                                                                  
+            call feedkeys('K', 'in')                                                                                                                                                                                                                                                                                                                                                          
+              endif                                                                                                                                                                                                                                                                                                                                                                           
+              endfunction                                                                                                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                                                                              
+" Highlight the symbol and its references when holding the cursor                                                                                                                                                                                                                                                                                                                             
+autocmd CursorHold * silent call CocActionAsync('highlight')                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                              
+" highlight CocErrorSign ctermfg=15 ctermbg=196                                                                                                                                                                                                                                                                                                                                               
+" highlight CocWarningSign ctermfg=0 ctermbg=172                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                              
+" Mappings for CoCList                                                                                                                                                                                                                                                                                                                                                                        
+" Show all diagnostics                                                                                                                                                                                                                                                                                                                                                                        
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>                                                                                                                                                                                                                                                                                                                             
+" Manage extensions                                                                                                                                                                                                                                                                                                                                                                           
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>                                                                                                                                                                                                                                                                                                                              
+" Show commands                                                                                                                                                                                                                                                                                                                                                                               
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>                                                                                                                                                                                                                                                                                                                                
+" Find symbol of current document                                                                                                                                                                                                                                                                                                                                                             
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>                                                                                                                                                                                                                                                                                                                                 
+" Search workspace symbols                                                                                                                                                                                                                                                                                                                                                                    
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>                                                                                                                                                                                                                                                                                                                              
+" Do default action for next item                                                                                                                                                                                                                                                                                                                                                             
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>                                                                                                                                                                                                                                                                                                                                         
+" Do default action for previous item                                                                                                                                                                                                                                                                                                                                                         
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>                                                                                                                                                                                                                                                                                                                                         
+" Resume latest coc list                                                                                                                                                                                                                                                                                                                                                                      
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>                                                                                                                                                                                                                                                                                                                                   
+" files                                                                                                                                                                                                                                                                                                                                                                                       
+nnoremap <silent><nowait> <C-p> :<C-u>CocList files<CR>                                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                                                                              
+" Add `:Format` command to format current buffer                                                                                                                                                                                                                                                                                                                                              
+command! -nargs=0 Format :call CocActionAsync('format')                                                                                                                                                                                                                                                                                                                                       
