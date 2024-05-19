@@ -100,9 +100,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 highlight CocErrorSign ctermfg=15 ctermbg=196
 highlight CocWarningSign ctermfg=0 ctermbg=172
 
-" stylelint実行
-nnoremap <silent><nowait> <space>l  :!node prepareScssEnv && npx stylelint --cache % --fix<cr>
-
 " coc-lists
 " Show all diagnostics
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
